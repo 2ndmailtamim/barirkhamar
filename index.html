@@ -4,7 +4,7 @@
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
 <meta name="color-scheme" content="light dark"/>
-<script>(function(){try{var t=localStorage.getItem("bk-theme");if(t!=="dark"&&t!=="light"){t=(window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches)?"dark":"light";}document.documentElement.setAttribute("data-theme",t);}catch(e){document.documentElement.setAttribute("data-theme","light");}})();</script>
+<script>(function(){try{var t=localStorage.getItem("bk-theme");if(t!=="dark"&&t!=="light"){t="light";}document.documentElement.setAttribute("data-theme",t);}catch(e){document.documentElement.setAttribute("data-theme","light");}})();</script>
 <link rel="icon" href="data:,"/>
 <title>বাড়ির খামার — BarirKhamar.com | কবুতর, কোয়েল, পাখি ও বিড়ালের সবকিছু</title>
 <meta name="description" content="বাড়ির খামার — কবুতর, কোয়েল, শখের পাখি ও বিড়ালের জন্য খাঁচা, খোপ, ক্যাট ফুড, পাখির খাবার, খড় ও সব সরঞ্জাম। সারা দেশে হোম ডেলিভারি, ক্যাশ অন ডেলিভারি।"/>
@@ -99,8 +99,16 @@ nav.cats button.active{background:var(--green);color:#fff}
 
 /* keep anchored sections clear of the sticky header */
 main#top,section[id]{scroll-margin-top:184px}
-@media (max-width:900px){main#top,section[id]{scroll-margin-top:150px}}
-@media (max-width:680px){main#top,section[id]{scroll-margin-top:242px}}
+@media (max-width:900px){main#top,section[id]{scroll-margin-top:192px}}
+@media (max-width:680px){main#top,section[id]{scroll-margin-top:168px}}
+
+/* compact header on tablets and phones: smaller round action buttons */
+@media (max-width:900px){
+  .menu-btn,.theme-toggle{width:42px;height:42px;min-height:42px;font-size:18px}
+  .head-actions .btn-wa span{display:none}
+  .head-actions .btn-wa{width:42px;height:42px;min-height:42px;padding:0;border-radius:50%;display:grid;place-items:center;font-size:18px}
+  .head-actions .cart-btn{padding:10px 16px;font-size:.92rem;white-space:nowrap}
+}
 
 /* dark mode readability polish */
 .drawer{border-left:1px solid var(--line)}
@@ -255,11 +263,26 @@ footer a:hover{text-decoration:underline}
   .cat-grid,.combo-grid,.two-col{grid-template-columns:1fr}
   .prod-grid{grid-template-columns:repeat(2,1fr);gap:12px}
   .prod .body{padding:14px}
-  .header-in{gap:10px}
+  /* compact mobile header: one tidy row (logo + small actions), search below */
+  .topstrip{font-size:.8rem;line-height:1.45}
+  .topstrip .wrap{padding-top:5px;padding-bottom:5px;gap:4px 10px}
+  .header-in{gap:8px 10px;padding:10px 0 12px;flex-wrap:wrap}
+  .logo{gap:9px;flex:1 1 auto;min-width:0}
+  .logo-badge{width:40px;height:40px;border-radius:12px;font-size:20px}
+  .logo b{font-size:1.12rem;white-space:nowrap}
+  .logo small{font-size:.68rem}
+  .head-actions{gap:6px;flex:none;margin-left:auto;flex-wrap:nowrap}
+  .menu-btn,.theme-toggle{width:38px;height:38px;min-height:38px;font-size:16px}
+  /* floating WhatsApp button stays on screen, so the header one is dropped on small phones */
+  .head-actions .btn-wa{display:none}
+  .head-actions .cart-btn{width:38px;height:38px;min-height:38px;padding:0;border-radius:50%;display:grid;place-items:center;font-size:16px}
+  .head-actions .cart-label{display:none}
+  .cart-count{top:-5px;right:-4px}
   .search{order:3;flex-basis:100%}
-  .logo b{font-size:1.15rem}
-  .head-actions .btn-wa span{display:none}
-  .head-actions .btn-wa{padding:10px 12px}
+  .search input{padding:9px 16px;font-size:.93rem}
+  .search button{padding:0 18px;font-size:.93rem}
+  nav.cats .wrap{padding-top:6px;padding-bottom:6px}
+  nav.cats button{padding:7px 13px;font-size:.92rem}
   .drawer{border-radius:0}
 }
 @media (prefers-reduced-motion: reduce){ *{transition:none!important;scroll-behavior:auto!important} }
@@ -319,7 +342,7 @@ footer a:hover{text-decoration:underline}
       <button class="menu-btn" id="menuBtn" type="button" aria-label="মেনু খুলুন" aria-expanded="false" aria-controls="mainMenu"><span id="menuIcon" aria-hidden="true">☰</span></button>
       <button class="theme-toggle" id="themeToggle" type="button" aria-label="ডার্ক মোড চালু করুন" aria-pressed="false" title="ডার্ক / লাইট মোড বদলান"><span id="themeIcon" aria-hidden="true">🌙</span></button>
       <a class="btn btn-wa" href="https://wa.me/8801351186168?text=%E0%A6%86%E0%A6%B8%E0%A6%B8%E0%A6%BE%E0%A6%B2%E0%A6%BE%E0%A6%AE%E0%A7%81%20%E0%A6%86%E0%A6%B2%E0%A6%BE%E0%A6%87%E0%A6%95%E0%A7%81%E0%A6%AE%2C%20%E0%A6%86%E0%A6%AE%E0%A6%BF%20%E0%A6%8F%E0%A6%95%E0%A6%9F%E0%A6%BE%20%E0%A6%AA%E0%A7%8D%E0%A6%B0%E0%A7%8B%E0%A6%A1%E0%A6%BE%E0%A6%95%E0%A7%8D%E0%A6%9F%20%E0%A6%B8%E0%A6%AE%E0%A7%8D%E0%A6%AA%E0%A6%B0%E0%A7%8D%E0%A6%95%E0%A7%87%20%E0%A6%9C%E0%A6%BE%E0%A6%A8%E0%A6%A4%E0%A7%87%20%E0%A6%9A%E0%A6%BE%E0%A6%87" target="_blank" rel="noopener">💬 <span>WhatsApp</span></a>
-      <button class="btn btn-green cart-btn" id="cartOpen" type="button">🛒 কার্ট <span class="cart-count" id="cartCount">0</span></button>
+      <button class="btn btn-green cart-btn" id="cartOpen" type="button" aria-label="কার্ট খুলুন">🛒 <span class="cart-label">কার্ট</span> <span class="cart-count" id="cartCount">0</span></button>
     </div>
   </div>
   <nav class="mainmenu" id="mainMenu" aria-label="প্রধান মেনু"><div class="wrap">
